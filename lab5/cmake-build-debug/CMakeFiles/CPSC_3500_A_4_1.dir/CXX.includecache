@@ -1,0 +1,18 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/matthewthayer/CLionProjects/CPSC_3500_A_4_1/producer_consumer.cpp
+pthread.h
+-
+iostream
+-
+unistd.h
+-
+cstdlib
+-
+

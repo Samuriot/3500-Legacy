@@ -1,0 +1,11 @@
+This project is p2: Parallel Zip. It showcases parallelization utilizing the pthread library in C++;
+To handle this parallelization, I had created two sets of threads, consumers and producers. A huge 
+majority of my producer threads were placed into the producers, as I had designated the jobs for each set.
+Producers were to go throughout the entire file based on their assignments (i.e., dividing up the size of file)
+and read the count of each letter, as well as the the letter itself in a data structure, then store in a queue. From here,
+the consumer thread would take in all the data and compress the data to standard output utilizing the write system call.
+To determine the number of threads to use, I had used the get_nprocs() and get_nprocs_conf() command on CS1 and it had returned that 64 processors were available for use on the server. This meant that I would be able to use 64 threads concurrently for my pzip program.
+I was able to efficiently perform each piece of work by assigning equal chunks to all the producers. After doing this, I had a single thread for the consumer read through all the nodes of the queue in order to properly print out the outcome of pzip compression.
+To access the input file, I had used mmap() to map the file to memory, then deallocated all the resources at the end of execution.
+To coordinate multiple threads, I had gotten the total size of the file from mmap, then split up the work amongst all the threads so that they would all be concurrently reading from the file via task decomposition. In doing this, I was able to coordinate and organize all the threads without having race conditions or deadlocks in my code.
+There is one issue where if you try to run the file with a text file for the first time on cs1, it freezes instantly. However, trying to run it every single time afterwards works fine. This bug is hard to replicate as it occurs some instances and does not happen for days at a time. I have not come up with a solution for this because I am unsure on how to replicate the bug in general.
